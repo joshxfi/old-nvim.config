@@ -28,7 +28,7 @@ local opts = {
 	smartcase = true,
 	smarttab = true,
 	softtabstop = 0,
-  scrolloff = 10,
+	scrolloff = 10,
 	tabstop = 2,
 	termguicolors = true,
 }
@@ -37,12 +37,20 @@ for k, v in pairs(opts) do
 	vim.opt[k] = v
 end
 
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("nightfox").setup({
+	options = {
+		transparent = true,
+	},
+})
+
 vim.cmd([[
   filetype on
   filetype plugin on
   syntax on
   syntax enable
 
-  colorscheme ayu
-  hi Normal guibg=NONE ctermbg=NONE
+  colorscheme terafox
 ]])

@@ -9,7 +9,7 @@ return require("packer").startup(function(use)
 			require("impatient").enable_profile()
 		end,
 	})
-	use("Shatur/neovim-ayu")
+	use("EdenEast/nightfox.nvim")
 
 	-- General
 	use("tpope/vim-fugitive")
@@ -55,7 +55,7 @@ return require("packer").startup(function(use)
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "ayu_mirage",
+					theme = "material",
 				},
 			})
 		end,
