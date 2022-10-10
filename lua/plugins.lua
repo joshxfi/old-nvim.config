@@ -14,6 +14,12 @@ return require("packer").startup(function(use)
 	use("princejoogie/tailwind-highlight.nvim")
 
 	use({
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	})
+	use({
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup()

@@ -45,5 +45,4 @@ vim.cmd([[
 
   colorscheme ayu
   hi Normal guibg=NONE ctermbg=NONE
-  autocmd TermOpen * setlocal nonumber norelativenumber
 ]])
