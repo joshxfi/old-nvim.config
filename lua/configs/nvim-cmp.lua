@@ -50,14 +50,6 @@ M.setup = function()
 				end,
 			}),
 		},
-		window = {
-			completion = {
-				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			},
-			documentation = {
-				border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-			},
-		},
 	})
 end
 

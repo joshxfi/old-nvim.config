@@ -47,11 +47,7 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
-local opts = {
-	capabilities = capabilities,
-	on_attach = require("lsp.on-attach").on_attach,
-}
-
+local on_attach = require("lsp.on-attach").on_attach
 local typescript = require("typescript")
 
 if not typescript then
@@ -60,15 +56,27 @@ end
 
 m.setup_handlers({
 	function(server_name)
-		local custom_opts_status, custom_opts = pcall(require, "lsp.settings." .. server_name)
-
-		if custom_opts_status then
-			opts = vim.tbl_deep_extend("force", custom_opts, opts)
-		end
-
-		lspconfig[server_name].setup(opts)
+		require("lspconfig")[server_name].setup({})
 	end,
 	["tsserver"] = function()
 		typescript.setup({ server = opts })
+		lspconfig.tsserver.setup({
+			on_attach = on_attach,
+			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+			cmd = { "typescript-language-server", "--stdio" },
+			capabilities = capabilities,
+		})
+	end,
+	["tailwindcss"] = function()
+		lspconfig.tailwindcss.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+	end,
+	["cssls"] = function()
+		lspconfig.cssls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 	end,
 })

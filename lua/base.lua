@@ -1,3 +1,13 @@
+vim.cmd([[
+  let s:clip = '/mnt/c/Windows/System32/clip.exe'
+  if executable(s:clip)
+    augroup WSLYank
+      autocmd!
+      autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup end
+  endif
+]])
+
 vim.g.mapleader = " "
 
 local opts = {
@@ -31,6 +41,8 @@ local opts = {
 	scrolloff = 10,
 	tabstop = 2,
 	termguicolors = true,
+	winblend = 0,
+	pumblend = 5,
 }
 
 for k, v in pairs(opts) do
