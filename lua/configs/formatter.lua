@@ -20,7 +20,7 @@ local prettier = {
 local prismafmt = {
 	function()
 		return {
-			exe = "prisma-fmt",
+			exe = "~/builds/prisma-engines/target/release/prisma-fmt",
 			args = { "format", "-i", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0)) },
 			stdin = true,
 		}
@@ -62,6 +62,7 @@ M.setup = function()
 			typescript = prettier,
 			typescriptreact = prettier,
 			markdown = prettier,
+			graphql = prettier,
 			html = prettier,
 			css = prettier,
 			json = prettier,
