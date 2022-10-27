@@ -22,6 +22,7 @@ m.setup({
 	ensure_installed = {
 		"sumneko_lua",
 		"emmet_ls",
+		"clangd",
 		"html",
 		"cssmodules_ls",
 		"cssls",
@@ -75,6 +76,12 @@ m.setup_handlers({
 	end,
 	["cssls"] = function()
 		lspconfig.cssls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+	end,
+	["clangd"] = function()
+		lspconfig.clangd.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
